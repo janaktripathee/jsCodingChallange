@@ -18,29 +18,62 @@
 
 
 
-function Book(title, author, ISBN, numCopies){
-    this.title = title;
-    this.author = author;
-    this.ISBN = ISBN;
-    this.numCopies = numCopies;
+// function Book(title, author, ISBN, numCopies){
+//     this.title = title;
+//     this.author = author;
+//     this.ISBN = ISBN;
+//     this.numCopies = numCopies;
 
-}
+// }
 
-Book.prototype.getAvailability = function(){
-    if(this.numCopies ===0){
-        return 'out of stock';
-    }else if (this.numCopies<10){
-        return 'low Stock';
+// Book.prototype.getAvailability = function(){
+//     if(this.numCopies ===0){
+//         return 'out of stock';
+//     }else if (this.numCopies<10){
+//         return 'low Stock';
+//     }
+//     return 'In Stock';
+// }
+
+// Book.prototype.sell= function(numCopiesSold =1){
+//     this.numCopies -=numCopiesSold;
+// }
+
+// Book.prototype.restock = function(numberCopiesStock =5){
+//     this.numCopies +=numberCopiesStock; 
+// }
+
+class Book{ 
+    constructor(title, author, ISBN, numCopies){
+        this.title = title;
+        this.author= author;
+        this.ISBN = ISBN;
+        this.numCopies = numCopies;
     }
-    return 'In Stock';
-}
 
-Book.prototype.sell= function(numCopiesSold =1){
-    this.numCopies -=numCopiesSold;
-}
+    get availibility(){
+       return  this.getAvailability();
 
-Book.prototype.restock = function(numberCopiesStock =5){
-    this.numCopies +=numberCopiesStock; 
+    }
+
+    getAvailability(){
+        if(this.numCopies ===0){
+            return "out of stock";
+        }else if (this.numCopies <10){
+            return "low Stock"
+        }
+        return 'In Stock'
+    }
+    sell(numCopiesSold =1){
+        this.numCopies -=numCopiesSold;
+
+    }
+    restock(numberCopiesStock =5){
+        this.numCopies += numberCopiesStock;
+
+    }
+
+
 }
 
 const HungerGames = new Book('Hunger Games','Suzanne Collins', '123334', 5);
